@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08111f" />
+    <title>MHT AI Automation — Video Dubbing Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="MHT AI Automation home">
+          <span class="brand-mark">✦</span>
+          <span class="brand-copy"><strong>MHT AI AUTOMATION</strong><small>VIDEO DUBBING PLATFORM</small></span>
+        </a>
+        <div class="top-actions">
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode"><span>◐</span><span>Dark</span></button>
+          <span class="ai-badge"><i></i> AI POWERED</span>
+        </div>
+      </header>
+
+      <main class="workspace" id="top">
+        <aside class="control-panel" aria-label="Dubbing controls">
+          <div class="panel-intro"><span class="eyebrow">DUB STUDIO / 01</span><h1>Make every frame<br /><em>speak Myanmar.</em></h1><p>Translate, voice, and export your content from one focused workspace.</p></div>
+
+          <section class="control-section source-section">
+            <div class="section-heading"><span class="section-icon">↗</span><span>VIDEO SOURCE</span><span class="section-line"></span></div>
+            <div class="source-card"><div>☑ YouTube, TikTok URL ထည့်ပါ</div><div>▣ ဗီဒီယိုဖိုင် Upload လုပ်ပါ</div><div>◉ ဗီဒီယိုကို အစကနေ ရိုက်ကူးပါ</div></div>
+            <label class="field-label" for="videoUrl">Video URL</label>
+            <div class="input-with-button"><input id="videoUrl" type="url" placeholder="https://www.tiktok.com/..." autocomplete="off" /><button id="urlFileButton" type="button">▣ File</button></div>
+            <input id="videoFile" class="visually-hidden" type="file" accept="video/*,audio/*" />
+            <div class="source-actions"><button id="recordButton" class="secondary-button" type="button">◉ Record video</button><span id="sourceStatus" class="hint">No source selected</span></div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-heading"><span class="section-icon">✦</span><span>MYANMAR VOICE</span><span class="section-line"></span></div>
+            <div class="voice-grid" role="radiogroup" aria-label="Myanmar voice">
+              <button class="voice-card selected" data-voice="male" type="button"><span class="voice-orb male">သ</span><span><strong>သီဟ</strong><small>Male Neural</small></span><span class="radio-dot"></span></button>
+              <button class="voice-card" data-voice="female" type="button"><span class="voice-orb female">ရ</span><span><strong>ရီလာ</strong><small>Female Neural</small></span><span class="radio-dot"></span></button>
+            </div>
+            <div class="voice-clone-row"><label for="referenceAudio">Voice clone reference</label><input id="referenceAudio" type="file" accept="audio/*" /><span id="cloneStatus">Optional</span></div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-heading"><span class="section-icon">▣</span><span>VIDEO FORMAT</span><span class="section-line"></span></div>
+            <div class="format-grid" role="radiogroup" aria-label="Video format">
+              <button class="format-card selected" data-format="original" type="button"><span class="format-shape original"></span><small>Original</small></button>
+              <button class="format-card" data-format="9:16" type="button"><span class="format-shape portrait"></span><small>9:16</small></button>
+              <button class="format-card" data-format="1:1" type="button"><span class="format-shape square"></span><small>1:1</small></button>
+              <button class="format-card" data-format="16:9" type="button"><span class="format-shape landscape"></span><small>16:9</small></button>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-heading"><span class="section-icon">◒</span><span>AUDIO MIX</span><span class="section-line"></span><output id="volumeValue">0%</output></div>
+            <label class="field-label" for="volumeSlider">မူရင်းအသံ Volume</label>
+            <input id="volumeSlider" class="range" type="range" min="0" max="100" value="0" />
+            <div class="range-caption"><span>0% = မူရင်းအသံမပါ</span><span>100% = အပြည့်</span></div>
+          </section>
+
+          <section class="control-section compact-section">
+            <div class="section-heading"><span class="section-icon">⌁</span><span>TEXT WATERMARK</span><span class="section-line"></span></div>
+            <div class="text-input"><span>⌘</span><input id="watermarkText" type="text" placeholder="Your Channel" /></div>
+          </section>
+
+          <section class="control-section compact-section">
+            <div class="section-heading"><span class="section-icon">▧</span><span>LOGO WATERMARK</span><span class="section-line"></span></div>
+            <label class="logo-upload" for="logoFile"><span class="upload-icon">▧</span><strong id="logoName">Logo ထည့်ပါ</strong><small>PNG, JPG, Transparent PNG အတွက်</small><input id="logoFile" class="visually-hidden" type="file" accept="image/png,image/jpeg" /></label>
+          </section>
+
+          <section class="control-section compact-section">
+            <div class="section-heading"><span class="section-icon">⌘</span><span>OPTIONS</span><span class="section-line"></span></div>
+            <div class="toggle-row"><span>◈ Flip Video</span><button class="switch" data-toggle="flipVideo" type="button" aria-pressed="false"><i></i></button></div>
+            <div class="toggle-row"><span>▧ Fade In/Out</span><button class="switch" data-toggle="fadeVideo" type="button" aria-pressed="false"><i></i></button></div>
+          </section>
+
+          <section class="control-section output-section">
+            <div class="section-heading"><span class="section-icon">✧</span><span>OUTPUT TYPE</span><span class="section-line"></span></div>
+            <div class="output-list" role="radiogroup" aria-label="Output type">
+              <button class="output-card selected" data-output="audio" type="button"><span class="output-icon purple">♬</span><span><strong>Dubbed Audio</strong><small>မြန်မာ အသံ ထည့်ပြီး</small></span><span class="check">✓</span></button>
+              <button class="output-card" data-output="subtitle" type="button"><span class="output-icon teal">••</span><span><strong>Subtitle Only</strong><small>မြန်မာ စာတန်း ထည့်ပြီး</small></span><span class="check">✓</span></button>
+              <button class="output-card" data-output="both" type="button"><span class="output-icon lime">✦</span><span><strong>Audio + Subtitle</strong><small>အသံ + စာတန်း</small></span><span class="check">✓</span></button>
+            </div>
+            <button id="generateButton" class="generate-button" type="button"><span>✣</span> SRT ထုတ်ပါ <small>⌘ Enter</small></button>
+            <p class="api-note">Transcribe → translate → voice. API calls run in your browser.</p>
+          </section>
+        </aside>
+
+        <section class="preview-column" aria-label="Preview and generation status">
+          <div class="preview-topline"><div><span class="eyebrow">LIVE CANVAS / 02</span><h2>Preview <span id="previewMode">Original</span></h2></div><div class="connection-pill"><i></i><span id="connectionText">Ready to process</span></div></div>
+          <div class="preview-card"><div class="preview-toolbar"><span>◫ <b id="previewTitle">Video URL ထည့်ပြီး စတင်ပါ</b></span><span class="toolbar-meta">1920 × 1080 <b>•</b> 00:00</span></div><div id="previewStage" class="preview-stage"><div class="stage-grid"></div><div class="empty-preview"><span class="clapper">▥</span><strong id="emptyTitle">Video URL ထည့်ပြီး စတင်ပါ</strong><p id="emptyCopy">သင့်ဗီဒီယိုကို အရင်ထည့်ပါ<br />ပြီးမှ “SRT ထုတ်ပါ” ကိုနှိပ်ပါ</p><div class="signal-caption"><span>ORIGINAL</span><i></i><span>မြန်မာ DUB</span></div><div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="preview-pulse"></div></div><video id="videoPreview" class="video-preview" controls playsinline></video><div id="previewOverlay" class="preview-overlay"></div></div><div class="preview-footer"><span id="timelineStatus">Timeline ready</span><span>● <span id="previewQuality">Auto</span></span></div></div>
+          <div class="workflow-card"><div class="workflow-heading"><div><span class="eyebrow">PROCESS MONITOR / VOICE + SUBTITLE</span><h3>Translation pipeline</h3></div><span id="pipelinePercent">0%</span></div><div class="progress-track"><span id="pipelineProgress"></span></div><div class="pipeline-steps"><div class="pipeline-step active" data-step="source"><span>01</span><strong>Source</strong><small>Video ready</small></div><div class="pipeline-step" data-step="transcribe"><span>02</span><strong>Transcribe</strong><small>Whisper</small></div><div class="pipeline-step" data-step="translate"><span>03</span><strong>Translate</strong><small>Myanmar</small></div><div class="pipeline-step" data-step="voice"><span>04</span><strong>Voice</strong><small>VoxCPM</small></div></div></div>
+          <div id="transcriptCard" class="transcript-card hidden"><div class="workflow-heading"><div><span class="eyebrow">OUTPUT</span><h3>Myanmar subtitle draft</h3></div><button id="downloadSrt" class="download-button" type="button">↓ Download .srt</button></div><pre id="subtitlePreview"></pre><audio id="dubbedAudio" class="audio-preview" controls></audio></div>
+        </section>
+      </main>
+      <button id="supportButton" class="support-button" type="button"><span>♧</span><span><strong>Contact &amp; Support</strong><small>Get help • Feedback</small></span></button>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
